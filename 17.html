@@ -116,7 +116,7 @@
 					
 				</div>
 				<div class="hireme_form2">
-					<form action="https://formsubmit.co/31f2231ac3d12f35ea6c164f1074111d" method="POST">
+					<form onsubmit="sendEmail(); reset(); return flalse;">
 						<fieldset>
 							 <legend><strong>Contact Me</strong></legend>
 							<p><label for="name">Your Name:</label>
@@ -143,6 +143,23 @@
 					</form>
 					
 				</div>
+				<script src="https://smtpjs.com/v3/smtp.js"></script>
+		<script>
+			function sendEmail(){
+				Email.send({
+				    Host : "smtp.gmail.com",
+				    Username : "thaonguyendeutsch@gmail.com",
+				    Password : "12345",
+				    To : 'thaocoding@gmail.com',
+				    From : document.getElementById("email").value,
+				    Subject : "New Contact Form Enquiry",
+				    Body : "Name: " + document.getElementById("name").value 
+				    + "br/ Email: " + document.getElementById("email").value,
+				}).then(
+				  message => alert("Message sent")
+				);
+			}
+		</script>
 			</div>
 		</div>
 	</div>
